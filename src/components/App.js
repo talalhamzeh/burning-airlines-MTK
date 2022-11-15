@@ -1,9 +1,9 @@
+import FlightBooker from './FlightBooker';
 function App() {
   return (
-    <div>
-
+    <div className="App">
+    
     </div>
   );
 }
-
 export default App;
