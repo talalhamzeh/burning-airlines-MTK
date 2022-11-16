@@ -1,35 +1,68 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 
-const Search = (props) => {
+const FLIGHTS_URL = 'http://localhost:3000/flights.json';
 
-    const [query, setQuery] = useState('');
+class Search extends Component{
 
-    const handleFlightOrigin = (e) => {
+    constructor(props) {
 
-        setQuery(e.target.value);
+        super(props);
+        this.state = {
+            searchResult: [],
+        
+            searchDeparture: '',
+            searchDestination: ''
+        };
+        this._handleFlightOrigin = this._handleFlightOrigin.bind(this);
+        this._handleFlightDestination = this._handleFlightDestination.bind(this);
+        this._handleSubmit = this._handleSubmit.bind(this);
     }
-    
-    const handleFlightDestination = (e)=> {
 
-        setQuery(e.target.value);
+        _handleFlightOrigin (e) {
+            this.setState({ searchDeparture: e.target.value });
+        }
     
-    }
-       const _handleSubmit = (e) => {
-        e.preventDefault();
-        props.onSubmit(query);
-    };
+        _handleFlightDestination (e) {
+             this.setState({ searchDestination: e.target.value });
+        }
+    
+        _handleSubmit (e) {
+            e.preventDefault()
+
+            const matches= this.props.flights.filter( (f) => { 
+                return f.departure === this.state.searchDeparture && f.destination === this.state.searchDestination;
+
+
+            });
+            this.setState ({ 
+                searchResult : matches 
+            })
+        }
+
+
+    render () {
+    
+   
+    const displayFlightDate = this.state.searchResult.map((s) => <p key={ s.id }>{ s.date }</p>)
+    const displayFlightNumber = this.state.searchResult.map((s) => <Link to='reservations/:flight_id' key={ s.id }>{ s.number }</Link>)
+    const displayFlightOrigin = this.state.searchResult.map((s) => <p key={ s.id }>{ s.departure }</p>)
+    const displayFlightDestination = this.state.searchResult.map((s) => <p key={ s.id }>{ s.destination }</p>)
+    
+
+
 
     return (
-
+       
         <div>
+            
             <h1> Search Flights</h1>
-            <form onSubmit={ _handleSubmit }>
+            <form onSubmit={ this._handleSubmit }>
 
-                <input onChange={this.handleFlightOrigin} placeholder='From' />
-                <input onChange={this.handleFlightDestination} placeholder='To' />
-                
+                <input onChange={this._handleFlightOrigin}  value={this.state.searchDeparture} placeholder='From' />
+                <input onChange={this._handleFlightDestination} value={this.state.searchDestination} placeholder='To' />
+                <input type="submit" value="search" />
             </form>
 
             <div className='flightDisplay'>
@@ -37,24 +70,28 @@ const Search = (props) => {
                 <div>
                     <h5>Date</h5>
                     {displayFlightDate}
+
+                    
                 </div>
                 <div>
-                    <h5>Flight</h5>
+                    <h5>Flight Number </h5>
                     {displayFlightNumber}
+                   
                 </div>
                 <div>
                     <h5>Origin</h5>
                     {displayFlightOrigin}
+                    
                 </div>
                 <div>
                     <h5>Destination</h5>
                     {displayFlightDestination}
+                    
                 </div>
-                <div>
-                    <h5>Plane</h5>
-                    {displayFlightPlane}
-                </div>
+                
             </div>
          </div>
     );
-};
+    }
+}
+export default Search ; 
