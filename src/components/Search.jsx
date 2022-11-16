@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { ReactDOM } from 'react';
+import { Link} from 'react-router-dom'
 
 const FLIGHTS_URL = 'http://localhost:3000/flights.json';
 
@@ -47,7 +48,7 @@ class Search extends Component{
     
    
     const displayFlightDate = this.state.searchResult.map((s) => <p key={ s.id }>{ s.date }</p>)
-    const displayFlightNumber = this.state.searchResult.map((s) => <Link to='reservations/:flight_id' key={ s.id }>{ s.number }</Link>)
+    const displayFlightNumber = this.state.searchResult.map((s) => <Link to="/reservations/" key={ s.id }>{ s.number }</Link>)
     const displayFlightOrigin = this.state.searchResult.map((s) => <p key={ s.id }>{ s.departure }</p>)
     const displayFlightDestination = this.state.searchResult.map((s) => <p key={ s.id }>{ s.destination }</p>)
     

@@ -30,7 +30,7 @@ function Navbar() {
             <Link to="/flights"> Flights </Link>
         </li>
         <li>
-            <Link to="/reservations">Resarvations</Link>
+            <Link to="/reservations">Reservations</Link>
         </li>
         <li>
             <Link to="/airplanes">Airplanes </Link>
