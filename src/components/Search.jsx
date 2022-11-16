@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const FLIGHTS_URL = 'http://localhost:3000/flights.json';
 
+
 class Search extends Component{
 
     constructor(props) {
@@ -53,11 +54,14 @@ class Search extends Component{
 
 
 
+
+
     return (
        
         <div>
             
             <h1> Search Flights</h1>
+
             <form onSubmit={ this._handleSubmit }>
 
                 <input onChange={this._handleFlightOrigin}  value={this.state.searchDeparture} placeholder='From' />
