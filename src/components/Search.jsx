@@ -48,7 +48,7 @@ class Search extends Component{
     
    
     const displayFlightDate = this.state.searchResult.map((s) => <p key={ s.id }>{ s.date }</p>)
-    const displayFlightNumber = this.state.searchResult.map((s) => <Link to="/reservations/" key={ s.id }>{ s.number }</Link>)
+    const displayFlightNumber = this.state.searchResult.map((s) => <Link to={"/reservations/" + s }  key={ s.id }>{ s.number }</Link>)
     const displayFlightOrigin = this.state.searchResult.map((s) => <p key={ s.id }>{ s.departure }</p>)
     const displayFlightDestination = this.state.searchResult.map((s) => <p key={ s.id }>{ s.destination }</p>)
     
