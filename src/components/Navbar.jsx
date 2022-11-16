@@ -1,30 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import Home from "../pages/Home";
 import './Navbar.css'
+
 function Navbar() {
   return (
-    // <nav>
-    //   <ul>
-    //     <li>
-    //       <Link to="/">Home</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/flights"> Flights </Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/reservations">Resarvations</Link>
-    //     </li>
-
-    //     <li>
-    //       <Link to="/airplanes">Airplanes </Link>
-    //     </li>
-        
-    //   </ul>
-    // </nav>   
+    
     <div id="nav">
     <ul>
         <li>
-            <Link to="/">Home</Link>
+           
+        <Link to="/home">Home</Link>
+        
         </li>
         <li>
             <Link to="/flights"> Flights </Link>
@@ -35,6 +22,17 @@ function Navbar() {
         <li>
             <Link to="/airplanes">Airplanes </Link>
         </li>
+        
+        <li>
+            <Link to='/login'>Log In</Link>
+        </li>
+        <li>
+            <Link to='/signup'>Sign Up</Link>
+        </li>
+
+        
+  
+
     </ul>
 </div>
   );

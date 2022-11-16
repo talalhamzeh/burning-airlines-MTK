@@ -1,0 +1,16 @@
+table {
+    border-collapse: separate;
+    border-spacing: 50px 0;
+  }
+  
+  td {
+    padding: 10px 0;
+  }
+  .flightDisplay {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 40px;
+}
+.flightDisplay div {
+    width: 20%;
+}
