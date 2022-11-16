@@ -1,41 +1,33 @@
-import React, {Component, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import Seats from '../components/Seats'
-let FLIGHTS_URL = "http://localhost:3000/flights/3.json"
-class Reservations extends Component{
-    constructor (){
-        super();
-        this.state = {
-            flight: {},
-            plane: {}
-        }
-    }
+import { useParams } from "react-router-dom";
 
-    componentDidMount(){
-        const fetchFlight =()=>{
+
+const Reservations = ()=>{
+    const {flight_id }= useParams()
+    let FLIGHTS_URL = `http://localhost:3000/flights/${flight_id}.json`
+    console.log(flight_id)
+    const [flight, setFlight] = useState({})
+    const [plane, setPlane] = useState({})
+        useEffect(()=>{
             axios(FLIGHTS_URL).then((response)=>{
-                this.setState({flight: response.data}) 
-                let airplane = fetchAirplane(response.data.airplane_id)
+                setFlight(response.data)
+            }).then(()=>{
+                let airplane_URL = `http://localhost:3000/airplanes/${plane.id}.json`
+                axios(airplane_URL).then((response)=>{
+                setPlane(response.data)
             })
-        }
-        fetchFlight()
-        const fetchAirplane =(airplane_id)=>{
-            let airplane_URL = `http://localhost:3000/airplanes/${airplane_id}.json`
-            axios(airplane_URL).then((response)=>{
-                this.setState({plane: response.data}) 
-            })
-        }
-        fetchAirplane()
-    }
-    render(){
-        return(
-            <div>
-                <h1>Reservations</h1>
-                <Seats flight={this.state.flight} plane={this.state.plane}/>
-            </div>
+        })
+    },[])
 
-        )
-    }
+    return(
+        <div>
+            <h1>Reservations</h1>
+            <Seats flight={flight} plane={plane}/>
+        </div>
+    )
+    
 
 }
 export default Reservations;
