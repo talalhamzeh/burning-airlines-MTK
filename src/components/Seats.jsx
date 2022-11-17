@@ -1,6 +1,5 @@
 import React from 'react'
-import './Seats.css'
-
+import axios from 'axios'
 const seats=[]
 const Seats =(props)=>{
     const getSeats = ()=>{
@@ -13,46 +12,52 @@ const Seats =(props)=>{
         }
         console.log(seats)
     }
+    let reservedSeat = ""
     getSeats()
+    const _handleReservation=(e)=>{
+        e.preventDefault()
+        let reservation = {
+            seat: reservedSeat,
+            flight_id: props.flight.id
+        }
+        console.log(reservation)
+        axios.post('http://localhost:3000/reservations',reservation)
+    }
+    const _handleSeat = (e)=>{
+        e.target.value="X"
+        reservedSeat = `${reservedSeat} ${e.target.name}`
+        console.log(reservedSeat)
+    }
 
 return(
-<div>
-{console.table(seats)}
+    <div>
+    {console.table(seats)}
+    <h1>seats</h1>
 
-<h1 className ='s'>Seats</h1>
-
-<ul class='flightDisplay'>
-
-
-    <h5> Date: {props.flight.date} </h5>
-    <h5> Flight Number: {props.flight.number} </h5>
-    <h5> Departure: {props.flight.departure} </h5>
-    <h5> Destination: {props.flight.destination} </h5>
+    <ul>
+        <li> {props.flight.date} </li>
+        <li> {props.flight.number} </li>
+        <li> {props.flight.departure} </li>
+        <li> {props.flight.destination} </li>
+    </ul>
 
 
+    {/* {seats.map((s)=> (<input type="button" value={s} />))} */}
+    <form onSubmit={_handleReservation}>
+        {seats.map((r,i)=> (
+            <div key={i}>
+                {console.log("row", r,i)}
+                {seats[i].map((s)=>{
+                    {console.log("seat", s)}
+                    return <input type="button" name={s.name} value={s.name} status={s.status} key={s.name} onClick={_handleSeat}/>
+                })}
+            </div>
+        ))}
+    <input type="submit" />
+    </form>
 
-</ul>
-
-
-{/* {seats.map((s)=> (<input type="button" value={s} />))} */}
-{seats.map((r,i)=> (
-    <div className ='button' key={i}>
-        {console.log("row", r,i)}
-        {seats[i].map((s)=>{
-            {console.log("seat", s)}
-            return <input type='button' value={s.name} key={s.name} />
-        })}
     </div>
-))}
-
-
-
-
-</div>
-
-
-
-    )
+)
 }
 
 export default Seats

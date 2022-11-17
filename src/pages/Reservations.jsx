@@ -18,6 +18,9 @@ const Reservations = ()=>{
             let airplane_URL = `http://localhost:3000/airplanes/${flight.airplane_id}.json`
             axios(airplane_URL).then((response)=>{
             setPlane(response.data)
+            return flight
+        }).then((flight)=>{
+            console.log(flight)
         })
     })
     },[])
