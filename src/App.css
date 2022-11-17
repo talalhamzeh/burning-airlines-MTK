@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.button {
+  display: flex;
+  justify-content: center;
+  border:none;
+  border-radius:5px;
+
+}
+
+.button input {
+  width: 50px;
+}

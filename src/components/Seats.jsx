@@ -1,4 +1,6 @@
 import React from 'react'
+import './Seats.css'
+
 const seats=[]
 const Seats =(props)=>{
     const getSeats = ()=>{
@@ -16,23 +18,29 @@ const Seats =(props)=>{
 return(
 <div>
 {console.table(seats)}
-<h1>seats</h1>
 
-<ul>
-    <li> {props.flight.date} </li>
-    <li> {props.flight.number} </li>
-    <li> {props.flight.departure} </li>
-    <li> {props.flight.destination} </li>
+<h1 className ='s'>Seats</h1>
+
+<ul class='flightDisplay'>
+
+
+    <h5> Date: {props.flight.date} </h5>
+    <h5> Flight Number: {props.flight.number} </h5>
+    <h5> Departure: {props.flight.departure} </h5>
+    <h5> Destination: {props.flight.destination} </h5>
+
+
+
 </ul>
 
 
 {/* {seats.map((s)=> (<input type="button" value={s} />))} */}
 {seats.map((r,i)=> (
-    <div key={i}>
+    <div className ='button' key={i}>
         {console.log("row", r,i)}
         {seats[i].map((s)=>{
             {console.log("seat", s)}
-            return <input type="button" value={s.name} key={s.name} />
+            return <input type='button' value={s.name} key={s.name} />
         })}
     </div>
 ))}
@@ -48,3 +56,4 @@ return(
 }
 
 export default Seats
+
