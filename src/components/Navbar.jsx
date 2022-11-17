@@ -16,13 +16,8 @@ function Navbar() {
         <li>
             <Link to="/flights"> Flights </Link>
         </li>
-        <li>
-            <Link to="/reservations">Reservations</Link>
-        </li>
-        <li>
-            <Link to="/airplanes">Airplanes </Link>
-        </li>
         
+        {  }
         <li>
             <Link to='/login'>Log In</Link>
         </li>
