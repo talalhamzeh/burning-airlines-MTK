@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Login from './UserLogin/Login';
+import '../App.css'
 
 class App extends Component {
   constructor(props) {
