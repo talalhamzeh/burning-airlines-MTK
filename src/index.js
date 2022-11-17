@@ -6,20 +6,26 @@ import Reservations from "./pages/Reservations";
 import Home from "./pages/Home";
 import Login from "./components/UserLogin/Login";
 import Signup from "./components/UserLogin/Signup";
+import Navbar from "./components/Navbar";
 
 
 
 export default function App() {
   return (
+    
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Layout />}>
-          <Route path="home" element={<Home />} />
-          <Route path="flights" element={<Flights />} />
-          <Route path="reservations/:flight_id" element={<Reservations />} />
+      
+      <Route path="/" element={<Layout />}>
+      <Route path="login" element={<Login />} />
+      <Route path="home" element={<Home />} />
+      <Route path="signup" element={<Signup />} />
           
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
+          
+     <Route path="flights" element={<Flights />} />
+     <Route path="reservations/:flight_id" element={<Reservations />} />
+          
+          
         
         </Route>
       </Routes>

@@ -16,6 +16,7 @@ class App extends Component {
 componentDidMount() {
   this.loginStatus()
 }
+
 loginStatus = () => {
     axios.get('http://localhost:3000/login', 
     {withCredentials: true})    
