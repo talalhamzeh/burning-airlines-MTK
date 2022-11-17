@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios';
 
 
-import Search from '../components/Search' ;
+import Search from '../components/Search/Search' ;
 
 const FLIGHTS_URL = "http://localhost:3000/flights.json"
 class Flights extends Component{
@@ -30,7 +30,7 @@ class Flights extends Component{
     render (){
         return(
             <div>  
-                
+
                 <h1>Flights</h1>
 
                 <Search flights={this.state.flights} />

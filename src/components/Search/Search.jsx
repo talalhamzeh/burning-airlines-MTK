@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { ReactDOM } from 'react';
 import { Link} from 'react-router-dom'
-
+import './Search.css'
 const FLIGHTS_URL = 'http://localhost:3000/flights.json';
 
 
