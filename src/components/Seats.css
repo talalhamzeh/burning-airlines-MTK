@@ -9,28 +9,41 @@
 
 
 .flightDisplay {
+    background-color: lightblue;
     display: flex;
     justify-content: space-around;
     margin: 10px 40px;
 }
+
 
 .button {
     display: flex;
     justify-content: center;
     border:none;
     border-radius:5px;
+    padding: 10px
+    
   
   }
+
+  .active {
+    background: green;
+  }
+
+ 
+
   
   .button input {
-    width: 50px;
+    width: 60px;
   }
 
-  .inactive {
-    background-color: red;
-
+  .submit {
+    display: flex;
+    width: 60px;
 
   }
+
+  
 
   .book {
     background-color: green;

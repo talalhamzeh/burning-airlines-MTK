@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import './Seats.css'
 const seats=[]
 const Seats =(props)=>{
     const getSeats = ()=>{
@@ -32,28 +33,28 @@ const Seats =(props)=>{
 return(
     <div>
     {console.table(seats)}
-    <h1>seats</h1>
+    <h1 className="s">Seats</h1>
 
-    <ul>
-        <li> {props.flight.date} </li>
-        <li> {props.flight.number} </li>
-        <li> {props.flight.departure} </li>
-        <li> {props.flight.destination} </li>
+    <ul className="flightDisplay">
+        <li> Date: {props.flight.date} </li>
+        <li> Flight Number: {props.flight.number} </li>
+        <li> Departure: {props.flight.departure} </li>
+        <li> Destination: {props.flight.destination} </li>
     </ul>
 
 
     {/* {seats.map((s)=> (<input type="button" value={s} />))} */}
     <form onSubmit={_handleReservation}>
         {seats.map((r,i)=> (
-            <div key={i}>
+            <div className="button" key={i}>
                 {console.log("row", r,i)}
                 {seats[i].map((s)=>{
                     {console.log("seat", s)}
-                    return <input type="button" name={s.name} value={s.name} status={s.status} key={s.name} onClick={_handleSeat}/>
+                    return <input className="button input" type="button" name={s.name} value={s.name} status={s.status} key={s.name} onClick={_handleSeat}/>
                 })}
             </div>
         ))}
-    <input type="submit" />
+    <input className="submit" type="Submit" />
     </form>
 
     </div>
