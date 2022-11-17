@@ -18,14 +18,15 @@ const Seats =(props)=>{
         e.preventDefault()
         let reservation = {
             seat: reservedSeat,
-            flight_id: props.flight.id
+            flight_id: props.flight.id,
+            name: e.target[0].value
         }
         console.log(reservation)
         axios.post('http://localhost:3000/reservations',reservation)
     }
     const _handleSeat = (e)=>{
         e.target.value="X"
-        reservedSeat = `${reservedSeat} ${e.target.name}`
+        reservedSeat = e.target.name
         console.log(reservedSeat)
     }
 
@@ -44,6 +45,8 @@ return(
 
     {/* {seats.map((s)=> (<input type="button" value={s} />))} */}
     <form onSubmit={_handleReservation}>
+        <p>Name:</p>
+        <input type="text" name="name" />
         {seats.map((r,i)=> (
             <div key={i}>
                 {console.log("row", r,i)}
